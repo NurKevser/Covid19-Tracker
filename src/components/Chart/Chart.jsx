@@ -15,7 +15,7 @@ const Chart = () => {
     console.log(dailyData);
 
     fetchAPI();
-  }, []);
+  },[]);
 
   const lineChart = dailyData.length ? ( //!== 0
     <Line
@@ -23,7 +23,7 @@ const Chart = () => {
         labels: dailyData.map(({ date }) => date),
         datasets: [
           {
-            data: dailyData.map(({ confirmed }) => confirmed),
+            data: dailyData.map((data) => data.confirmed),
             label: "Infected",
             borderColor: "#3333ff",
             fill: true,
@@ -33,13 +33,6 @@ const Chart = () => {
             label: "Deaths",
             borderColor: "red",
             backgrounColor: "rgba(255, 0, 0, 0.5)",
-            fill: true,
-          },
-          {
-            data: dailyData.map((data) => data.recovered),
-            label: "Recovered",
-            borderColor: "green",
-            backgrounColor: "rgba(0,255, 0, 0.5)",
             fill: true,
           },
         ],
